@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import Accordion from './Accordion';
+import Button from './components/Button'
+import { BsAndroid2 } from "react-icons/bs";
+import DropDown from './components/DropDown';
+import Table from './components/Table'
+function App(){
+    const items = [
+        {
+            id:"asflds",
+            heading:'react is a good thing.',
+            description:'react is a good thing.react is a good thing.react is a good thing.'
+        },
+        {
+            id:"jhb",
+            heading:'javA is a good thing.',
+            description:'react is a good thing.react is a good thing.react is a good thing.'
+        },
+        {
+            id:"i",
+            heading:'JS is a good thing.',
+            description:'react is a good thing.react is a good thing.react is a good thing.'
+        }
+        
+    ]
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const colors = [{id:'asd',
+                      name:'red'},
+                      {id:'asdas',
+                      name:'green'},
+                      {id:'wert',
+                      name:'blue'}]
+
+    return(<div>
+       
+       {/* <Accordion items={items}/> */}
+
+       {/* <DropDown colors={colors}/> */}
+
+       <Table/>
+      
+    </div>)
 }
 
 export default App;
