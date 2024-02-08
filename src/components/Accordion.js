@@ -5,14 +5,14 @@ function Accordion ({items}){
     const [isExpanded,setIsExpanded] = useState(null);
     let arrow = <IoIosArrowDown/>;
     const handleClick = (newItem)=>{
-        console.log(newItem.heading)
-        console.log(isExpanded)
+        
      setIsExpanded(newItem.id)
      arrow=<IoIosArrowForward/>;
      if(newItem.id===isExpanded){
         setIsExpanded(null)
      }
     }
+    
     const renderedItems = items.map((item)=>{
         return (<div key={item.id}>
            

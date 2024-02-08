@@ -1,8 +1,13 @@
-import Accordion from './Accordion';
-import Button from './components/Button'
-import { BsAndroid2 } from "react-icons/bs";
+
+
 import DropDown from './components/DropDown';
-import Table from './components/Table'
+import Link from './components/Link';
+import Accordion from './components/Accordion';
+import ButtonPage from './pages/ButtonPage';
+import Route from './components/Route';
+import DropDownPage from './components/DropDownPage';
+import Button from './components/Button';
+
 function App(){
     const items = [
         {
@@ -22,6 +27,8 @@ function App(){
         }
         
     ]
+      
+
 
     const colors = [{id:'asd',
                       name:'red'},
@@ -30,14 +37,16 @@ function App(){
                       {id:'wert',
                       name:'blue'}]
 
+                   
     return(<div>
-       
-       {/* <Accordion items={items}/> */}
+       Hi
 
-       {/* <DropDown colors={colors}/> */}
+      {/*  <Accordion items={items}/> */}
+     {/*  <DropDownPage colors={colors}/> */}
+    
+   {/* <ButtonPage/> */}
 
-       <Table/>
-      
+   
     </div>)
 }
 

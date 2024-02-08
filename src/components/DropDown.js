@@ -13,6 +13,7 @@ function DropDown({colors}){
         setShowList(!showList);
         
     }
+   
     const renderedItems = colors.map((color,index)=>{
         return (<div key={index} onClick={()=>{onColorSelect(color.name)}}>{color.name}</div>)
     })
