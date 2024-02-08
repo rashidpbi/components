@@ -5,9 +5,9 @@ import Link from './components/Link';
 import Accordion from './components/Accordion';
 import ButtonPage from './pages/ButtonPage';
 import Route from './components/Route';
-import DropDownPage from './components/DropDownPage';
+import DropDownPage from './pages/DropDownPage';
 import Button from './components/Button';
-
+import AccordionPage from './pages/AccordionPage'
 function App(){
     const items = [
         {
@@ -41,12 +41,12 @@ function App(){
     return(<div>
        Hi
 
-      {/*  <Accordion items={items}/> */}
+       <AccordionPage items={items}/>
      {/*  <DropDownPage colors={colors}/> */}
     
    {/* <ButtonPage/> */}
 
-   
+
     </div>)
 }
 
