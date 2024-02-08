@@ -1,4 +1,5 @@
 
+import { useState,useEffect,useContext } from 'react';
 
 import DropDown from './components/DropDown';
 import Link from './components/Link';
@@ -8,7 +9,10 @@ import Route from './components/Route';
 import DropDownPage from './pages/DropDownPage';
 import Button from './components/Button';
 import AccordionPage from './pages/AccordionPage'
+import NavigationContext from './context/navigation';
 function App(){
+
+    const check = useContext(NavigationContext);
     const items = [
         {
             id:"asflds",
@@ -28,6 +32,7 @@ function App(){
         
     ]
       
+  
 
 
     const colors = [{id:'asd',
@@ -39,12 +44,23 @@ function App(){
 
                    
     return(<div>
-       Hi
+       
+    <Link to="/accordion">go to accordion</Link>
+    <Link to="/button">go to button</Link>
+    <Link to="/dropdown">go to dropdown</Link>
 
-       <AccordionPage items={items}/>
-     {/*  <DropDownPage colors={colors}/> */}
-    
-   {/* <ButtonPage/> */}
+    <div>
+        <Route path="/accordion">
+        <AccordionPage items={items}/>
+        </Route>
+        <Route path="/button">
+            <ButtonPage/>
+        </Route>
+        <Route path="/dropdown">
+        <DropDownPage colors={colors}/>
+        </Route>
+    </div>
+      
 
 
     </div>)
