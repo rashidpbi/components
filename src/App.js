@@ -1,18 +1,16 @@
 
-import { useState,useEffect,useContext } from 'react';
 
-import DropDown from './components/DropDown';
-import Link from './components/Link';
-import Accordion from './components/Accordion';
+
+
+
 import ButtonPage from './pages/ButtonPage';
 import Route from './components/Route';
 import DropDownPage from './pages/DropDownPage';
-import Button from './components/Button';
-import AccordionPage from './pages/AccordionPage'
-import NavigationContext from './context/navigation';
-function App(){
 
-    const check = useContext(NavigationContext);
+import AccordionPage from './pages/AccordionPage'
+import SideBar from './components/SideBar'
+
+function App(){
     const items = [
         {
             id:"asflds",
@@ -32,7 +30,6 @@ function App(){
         
     ]
       
-  
 
 
     const colors = [{id:'asd',
@@ -41,29 +38,29 @@ function App(){
                       name:'green'},
                       {id:'wert',
                       name:'blue'}]
-
-                   
-    return(<div>
-       
-    <Link to="/accordion">go to accordion</Link>
-    <Link to="/button">go to button</Link>
-    <Link to="/dropdown">go to dropdown</Link>
-
-    <div>
-        <Route path="/accordion">
-        <AccordionPage items={items}/>
-        </Route>
-        <Route path="/button">
-            <ButtonPage/>
-        </Route>
-        <Route path="/dropdown">
-        <DropDownPage colors={colors}/>
-        </Route>
-    </div>
-      
-
-
-    </div>)
+              
+                      return(<div>
+       <SideBar/>
+                       
+                    
+                        <div>
+                           <Route path="/">
+                            <AccordionPage items={items}/>
+                            </Route>
+                            <Route path="/accordion">
+                            <AccordionPage items={items}/>
+                            </Route>
+                            <Route path="/button">
+                                <ButtonPage/>
+                            </Route>
+                            <Route path="/dropdown">
+                            <DropDownPage colors={colors}/>
+                            </Route>
+                        </div>
+                          
+                    
+                    
+                        </div>)
 }
 
 export default App;
