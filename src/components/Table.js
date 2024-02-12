@@ -1,34 +1,37 @@
-function Table({ data, config ,keyFn  }) {
-    const renderedHeaders = config.map((item) => (
+function Table({ data, config ,keyFn ,keyFnVeh,vehicleData,vehicleConfig  }) {
+    const renderedHeaders = vehicleConfig.map((item) => (
         <th className="p-3" key={item.label}>
             {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
         </th>
     ));
 
-    const renderedRows = data.map((rawData) => {
-        const renderedCells = config.map((config) => (
-            <td className="p-3" key={config.label}>
-                {config.render(rawData)}
+    const renderedRows = vehicleData.map((rawData) => {
+        const renderedCells = vehicleConfig.map((vehicleConfig) => (
+            <td className="p-3" key={vehicleConfig.label}>
+                {vehicleConfig.render(rawData)}
             </td>
         ));
        
         return (
             
-            <tr className="border-b" key={keyFn(rawData)}>
+            <tr className="border-b" key={keyFnVeh(rawData)}>
                 {renderedCells}
             </tr>
         );
     });
 
     return (
-        <div className="table-auto border-spacing-2">
-            <table>
-                <thead>
-                    <tr className="border-b-2">{renderedHeaders}</tr>
-                </thead>
-                <tbody>{renderedRows}</tbody>
-            </table>
+        <div>
+            <div className="table-auto border-spacing-2">
+                <table>
+                    <thead>
+                        <tr className="border-b-2">{renderedHeaders}</tr>
+                    </thead>
+                    <tbody>{renderedRows}</tbody>
+                </table>
+            </div>
         </div>
+        
     );
 }
 
