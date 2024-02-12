@@ -7,11 +7,11 @@ function Table ({data,config}){
     const renderedRows = data.map((fruit) => {
         return (
             <tr className="border-b" key={fruit.fruit}>
-                <td className="p-3">{fruit.fruit}</td>
+                <td className="p-3">{config[0].render(fruit)}</td>
                 <td className="p-3">
-                    <div className={`p-3 m-2 ${fruit.color}`}></div>
+                {config[1].render(fruit)}
                 </td>
-                <td className="p-3">{fruit.score}</td>
+                <td className="p-3">{config[2].render(fruit)}</td>
             </tr>
         );
     });

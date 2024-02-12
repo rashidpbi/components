@@ -23,11 +23,10 @@ function TablePage(){
             score: 4,
         }
 ];
-
 const config = [
-    { label: "fruits" },
-    { label: "color" },
-    { label: "score" },
+    { label: "fruit", render: (fruit) => fruit.fruit },
+    { label: "color", render: (fruit) => <div className={`p-3 m-2 ${fruit.color}`}></div> },
+    { label: "score", render: (fruit) => fruit.score },
 ];
 
  return(<div>
