@@ -10,6 +10,7 @@ import DropDownPage from './pages/DropDownPage';
 import AccordionPage from './pages/AccordionPage'
 import SideBar from './components/SideBar'
 import ModalPage from './pages/ModalPage';
+import TablePage from './pages/TablePage';
 
 function App(){
     const items = [
@@ -59,6 +60,9 @@ function App(){
                             </Route>
                             <Route path="/modal">
                             <ModalPage />
+                            </Route>
+                            <Route path="/table">
+                            <TablePage />
                             </Route>
                         </div>
                           
