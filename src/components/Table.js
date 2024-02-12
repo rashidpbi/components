@@ -5,13 +5,12 @@ function Table ({data,config}){
         </th>
     ));
     const renderedRows = data.map((fruit) => {
+        const renderedCells = config.map((config)=>{
+            return <td className="p-3" >{config.render(fruit)}</td>
+        })
         return (
             <tr className="border-b" key={fruit.fruit}>
-                <td className="p-3">{config[0].render(fruit)}</td>
-                <td className="p-3">
-                {config[1].render(fruit)}
-                </td>
-                <td className="p-3">{config[2].render(fruit)}</td>
+                {renderedCells}
             </tr>
         );
     });
