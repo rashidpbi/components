@@ -9,6 +9,7 @@ import DropDownPage from './pages/DropDownPage';
 
 import AccordionPage from './pages/AccordionPage'
 import SideBar from './components/SideBar'
+import ModalPage from './pages/ModalPage';
 
 function App(){
     const items = [
@@ -55,6 +56,9 @@ function App(){
                             </Route>
                             <Route path="/dropdown">
                             <DropDownPage colors={colors}/>
+                            </Route>
+                            <Route path="/modal">
+                            <ModalPage />
                             </Route>
                         </div>
                           

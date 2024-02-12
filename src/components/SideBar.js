@@ -13,6 +13,10 @@ function SideBar(){
             label: "dropdown",
             path: "/dropdown",
         },
+        {
+            label: "modal",
+            path: "/modal",
+        },
     ];
     
         
