@@ -1,6 +1,7 @@
 import Table from '../components/Table'
 
 function TablePage(){
+    
     const data = [
         {
             fruit: "Orange",
@@ -54,7 +55,7 @@ const vehicleData = [
 const vehicleConfig = [
     { label: "vehicle", render: (vehicle) => vehicle.vehicle },
     { label: "color", render: (vehicle) => <div className={`p-3 m-2 ${vehicle.color}`}></div> },
-    { label: "speed", render: (vehicle) => vehicle.speed, header: () => <th className="bg-red-500">Speed</th> }
+    { label: "speed", render: (vehicle) => vehicle.speed, header: () => <th className='bg-red-500'>Speed</th> }
 ];
 
 const keyFn = (fruit)=>{
