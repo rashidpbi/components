@@ -1,4 +1,4 @@
-import Table from '../components/Table'
+import SortableTable from '../components/SortableTable';
 
 function TablePage(){
     
@@ -33,7 +33,7 @@ const vehicleData = [
     {
         vehicle: "Car",
         color: "bg-blue-500",
-        speed: 120,
+        speed: 10,
     },
     {
         vehicle: "Motorcycle",
@@ -43,7 +43,7 @@ const vehicleData = [
     {
         vehicle: "Truck",
         color: "bg-yellow-700",
-        speed: 60,
+        speed: 6,
     },
     {
         vehicle: "Bicycle",
@@ -53,9 +53,10 @@ const vehicleData = [
 ];
 
 const vehicleConfig = [
-    { label: "vehicle", render: (vehicle) => vehicle.vehicle },
+    { label: "vehicle", render: (vehicle) => vehicle.vehicle ,sortValue:(vehicle)=>vehicle.vehicle},
     { label: "color", render: (vehicle) => <div className={`p-3 m-2 ${vehicle.color}`}></div> },
-    { label: "speed", render: (vehicle) => vehicle.speed, header: () => <th className='bg-red-500'>Speed</th> }
+    { label: "speed", render: (vehicle) => vehicle.speed, sortValue:(vehicle)=>vehicle.speed},
+    { label: "speed doubled", render: (vehicle) => 2* vehicle.speed, sortValue:(vehicle)=> 2 * vehicle.speed}
 ];
 
 const keyFn = (fruit)=>{
@@ -66,7 +67,9 @@ const keyFnVeh = (vehicle)=>{
 }
 
  return(<div>
-    <Table data={data} config={config} keyFn={keyFn} keyFnVeh={keyFnVeh} vehicleData={vehicleData} vehicleConfig={vehicleConfig}/>
+    <SortableTable  keyFnVeh={keyFnVeh} vehicleData={vehicleData} vehicleConfig={vehicleConfig}/>
+  
+   
  </div>)
 }
 

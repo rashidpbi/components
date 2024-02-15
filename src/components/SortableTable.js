@@ -1,44 +1,96 @@
-import { Fragment } from "react";
-function SortableTable({ data, config ,keyFn ,keyFnVeh,vehicleData,vehicleConfig  }) {
-    const renderedHeaders = vehicleConfig.map((item) => {
-       
-        if (item.header){
-                return <Fragment key={item.label}>{item.header()}</Fragment>;
-        }
-        return(
-        <th className="p-3" key={item.label}>
-            {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
-        </th>)
-});
+import { GoArrowUp,GoArrowDown } from "react-icons/go";
+import { useState } from "react";
+import Table from "./Table";
+function SortableTable(props) {
+  //willing to put four daytimes (2 sessions) for this component(20hr). no wtching allowed in two days.
+  
+  //overal component : 2hr done.
+  //state desing : 3 hr done.
+  //implemenation : 2hr
+  //checking : 2 hr
+  //searching and finding : 3 hr //not required.
+  //refactor: 2 hr
+  //go thru video agian if not able : 2hr done
+  //do it again 3hr
+  
+  const { vehicleConfig ,vehicleData } = props;
+  
+  const [sortOrder, setSortOrder] = useState(null);
+  const [sortBy, setSortBy] = useState(null);
+  
 
-    const renderedRows = vehicleData.map((rawData) => {
-        const renderedCells = vehicleConfig.map((vehicleConfig) => (
-            <td className="p-3" key={vehicleConfig.label}>
-                {vehicleConfig.render(rawData)}
-            </td>
-        ));
-       
-        return (
-            
-            <tr className="border-b" key={keyFnVeh(rawData)}>
-                {renderedCells}
-            </tr>
-        );
-    });
+  
+  
+  const updatedVehicleConfig = vehicleConfig.map((column) => {
+    
+    
+    const onClick = (label) => {
 
-    return (
-        <div>
-            <div className="table-auto border-spacing-2">
-                <table>
-                    <thead>
-                        <tr className="border-b-2">{renderedHeaders}</tr>
-                    </thead>
-                    <tbody>{renderedRows}</tbody>
-                </table>
-            </div>
-        </div>
+      if (sortBy && column.label !== sortBy){
+        setSortOrder('asc');
+        setSortBy(column.label);
+        return;
+      }
+
+      if (sortOrder === null) {
+        setSortOrder("asc");
+        setSortBy(label);
+      } else if (sortOrder === "asc") {
+        setSortOrder("desc");
+        setSortBy(label);
+      } else if (sortOrder === "desc") {
+        setSortOrder(null);
+        setSortBy(null);
+      }
+    };
+    if (!column.sortValue) {
+      return column;
+    }
+   
+    return {
+      ...column,
+      header: () => (
         
-    );
+        <th onClick={() => onClick(column.label)} className="cursor-pointer hover:bg-gray-100"><div className="flex items-center">{getIcons(column.label,sortOrder,sortBy)}{column.label}</div></th>
+      ),
+    };
+  });
+  
+
+  let updatedData = vehicleData;
+  if(sortBy=== null && sortOrder === null){
+    updatedData = [...vehicleData];
+  }else{
+    const {sortValue} = vehicleConfig.find((column) => column.label === sortBy);
+    
+    updatedData = [...vehicleData].sort((a,b)=>{
+      let reverseOrder = sortOrder==='asc'?1:-1;
+      let valueA = sortValue(a);
+      let valueB = sortValue(b);
+       if(typeof valueA === 'number'){
+        return (valueA - valueB)*reverseOrder
+       }else if (typeof valueA === 'string'){
+        return (valueA.localeCompare(valueB)*reverseOrder)
+       }
+     })
+  }
+  return (
+      <Table {...props} vehicleData = {updatedData} vehicleConfig={updatedVehicleConfig} />
+  
+  );
 }
 
+function getIcons(label,sortOrder,sortBy){
+  if(label !== sortBy){
+    return (<div><GoArrowUp/><GoArrowDown/></div>)
+  }else if (sortOrder === 'asc'){
+    return <GoArrowUp/>
+  }else if (sortOrder === 'desc')
+  return <GoArrowDown/>
+
+}
 export default SortableTable;
+
+
+
+
