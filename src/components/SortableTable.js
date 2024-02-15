@@ -2,16 +2,7 @@ import { GoArrowUp,GoArrowDown } from "react-icons/go";
 import { useState } from "react";
 import Table from "./Table";
 function SortableTable(props) {
-  //willing to put four daytimes (2 sessions) for this component(20hr). no wtching allowed in two days.
   
-  //overal component : 2hr done.
-  //state desing : 3 hr done.
-  //implemenation : 2hr
-  //checking : 2 hr
-  //searching and finding : 3 hr //not required.
-  //refactor: 2 hr
-  //go thru video agian if not able : 2hr done
-  //do it again 3hr
   
   const { vehicleConfig ,vehicleData } = props;
   
