@@ -20,6 +20,10 @@ function SideBar(){
         {
             label: "table",
             path: "/table",
+        },
+        {
+            label: "counter",
+            path: "/counter",
         }
     ];
     

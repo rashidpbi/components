@@ -6,6 +6,7 @@ import AccordionPage from "./pages/AccordionPage";
 import SideBar from "./components/SideBar";
 import ModalPage from "./pages/ModalPage";
 import TablePage from "./pages/TablePage";
+import CounterPage from "./pages/CounterPage";
 
 function App() {
   const items = [
@@ -57,6 +58,9 @@ function App() {
         </Route>
         <Route path="/table">
           <TablePage />
+        </Route>
+        <Route path="/counter">
+          <CounterPage initialState={0} />
         </Route>
       </div>
     </div>
